@@ -330,7 +330,7 @@ impl StreamDeck {
         match pos {
             TextPosition::Absolute { x, y } => {
                 let mut y = *y;
-                text.to_string().split("\n").for_each(|txt| {
+                text.to_string().split('\n').for_each(|txt| {
                     draw_text_mut(&mut image, colour, *x, y, opts.scale, font, txt);
                     y += (opts.scale.y * opts.line_height).round() as i32;
                 });
@@ -383,7 +383,7 @@ impl StreamDeck {
             KeyDirection::LeftToRight => key,
             // The original Streamdeck uses 1-indexed right-to-left
             KeyDirection::RightToLeft => {
-                let cols = self.kind.key_columns() as u8;
+                let cols = self.kind.key_columns();
                 let col = key % cols;
                 let row = key / cols;
                 row * cols + cols - col
