@@ -103,6 +103,11 @@ impl StreamDeck {
     pub fn connect(vid: u16, pid: u16, serial: Option<String>) -> Result<StreamDeck, Error> {
         // Create new API
         let api = HidApi::new()?;
+        debug!("Available device list:");
+        for d in api.device_list() {
+            debug!("  Device: {:?}", d);
+        }
+
         StreamDeck::connect_with_hid(&api, vid, pid, serial)
     }
 
@@ -127,10 +132,6 @@ impl StreamDeck {
         };
 
         debug!("Device info: {:?}", kind);
-
-        for d in api.device_list() {
-            debug!("Device: {:?}", d);
-        }
 
         // Attempt to connect to device
         let device = match &serial {
