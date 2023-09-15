@@ -128,6 +128,10 @@ impl StreamDeck {
 
         debug!("Device info: {:?}", kind);
 
+        for d in api.device_list() {
+            debug!("Device: {:?}", d);
+        }
+
         // Attempt to connect to device
         let device = match &serial {
             Some(s) => api.open_serial(vid, pid, s),
