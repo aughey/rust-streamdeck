@@ -1,4 +1,4 @@
-use std::{io::Error as IoError};
+use std::io::Error as IoError;
 use std::time::Duration;
 
 #[macro_use]
@@ -94,6 +94,7 @@ pub mod pids {
     pub const MINI: u16 = 0x0063;
     pub const XL: u16 = 0x006c;
     pub const MK2: u16 = 0x0080;
+    pub const PLUS: u16 = 0x0084;
     pub const REVISED_MINI: u16 = 0x0090;
 }
 
@@ -121,7 +122,7 @@ impl StreamDeck {
             pids::XL => Kind::Xl,
             pids::MK2 => Kind::Mk2,
             pids::REVISED_MINI => Kind::Mini,
-
+            pids::PLUS => Kind::Plus,
             _ => return Err(Error::UnrecognisedPID),
         };
 
