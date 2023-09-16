@@ -54,7 +54,7 @@ impl Kind {
             Kind::Original | Kind::OriginalV2 | Kind::Mk2 => 15,
             Kind::Mini => 6,
             Kind::Xl => 32,
-            Kind::Plus => 8,
+            Kind::Plus => 16,
         }
     }
 
